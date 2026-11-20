@@ -18,10 +18,10 @@ InitFlowConfig_MagicSpearCustom() {
         CreateDefaultFlowConfig_MagicSpearCustom(configPath)
 
     skillConfig.startButton := ReadConfigStr(configPath, "Global", "startButton", "F1")
-    skillConfig.sequence := ReadConfigStr(configPath, "Global", "sequence", "R T")
+    skillConfig.sequence := ReadConfigStr(configPath, "Global", "sequence", "1 LButton*3 RButton 4 LButton*3")
     skillConfig.pressHold := ReadConfigInt(configPath, "Global", "pressHold", 35)
-    skillConfig.pressDelay := ReadConfigInt(configPath, "Global", "pressDelay", 80)
-    skillConfig.mainLoopDelay := ReadConfigInt(configPath, "Global", "mainLoopDelay", 80)
+    skillConfig.pressDelay := ReadConfigInt(configPath, "Global", "pressDelay", 95)
+    skillConfig.mainLoopDelay := ReadConfigInt(configPath, "Global", "mainLoopDelay", 120)
     triggerMode := ReadConfigInt(configPath, "Global", "triggerMode", 1)
     startMainLoopButton := skillConfig.startButton
 }
@@ -35,11 +35,11 @@ CreateDefaultFlowConfig_MagicSpearCustom(configPath) {
     (LTrim
 [Global]
 startButton = F1
-; 尚未取得魔枪实战循环，默认仅用于验证；请在界面修改
-sequence = R T
+; 20级练级循环；升级后可直接在界面修改
+sequence = 1 LButton*3 RButton 4 LButton*3
 pressHold = 35
-pressDelay = 80
-mainLoopDelay = 80
+pressDelay = 95
+mainLoopDelay = 120
 ; 0=按住运行，1=按一下开始、再按一下停止
 triggerMode = 1
     )"
