@@ -18,7 +18,7 @@ InitFlowConfig_MagicSpearCustom() {
         CreateDefaultFlowConfig_MagicSpearCustom(configPath)
 
     skillConfig.startButton := ReadConfigStr(configPath, "Global", "startButton", "F1")
-    skillConfig.sequence := ReadConfigStr(configPath, "Global", "sequence", "E T*2 4 Tab 4 R*4 X V Z T*2 R*4")
+    skillConfig.sequence := ReadConfigStr(configPath, "Global", "sequence", "E T*2 4 Tab 4 R*10 X V Z T*2 R*10")
     skillConfig.pressHold := ReadConfigInt(configPath, "Global", "pressHold", 35)
     skillConfig.pressDelay := ReadConfigInt(configPath, "Global", "pressDelay", 120)
     skillConfig.mainLoopDelay := ReadConfigInt(configPath, "Global", "mainLoopDelay", 180)
@@ -35,8 +35,8 @@ CreateDefaultFlowConfig_MagicSpearCustom(configPath) {
     (LTrim
 [Global]
 startButton = F1
-; 整条连续循环：E → T×2 → 4 → Tab → 4 → R×4 → X → V → Z → T×2 → R×4
-sequence = E T*2 4 Tab 4 R*4 X V Z T*2 R*4
+; 整条连续循环：E → T×2 → 4 → Tab → 4 → R×10 → X → V → Z → T×2 → R×10
+sequence = E T*2 4 Tab 4 R*10 X V Z T*2 R*10
 pressHold = 35
 pressDelay = 120
 mainLoopDelay = 180
