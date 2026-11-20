@@ -175,14 +175,9 @@ UpdateFlowOptions(cboJob, cboFlow) {
     if (flowList.Length = 0) {
         cboFlow.Add(["暂未配置"])
     } else {
-        for index, flow in flowList {
-            local status := GetFlowStatusDesc(flow.flowId)
-            if (status = "已实现") {
-                cboFlow.Add([flow.name])
-            } else {
-                cboFlow.Add([flow.name . " (待开发)"])
-            }
-        }
+        ; 只有已经接入模块的流派才会加入 JobFlowMap，因此直接显示名称。
+        for index, flow in flowList
+            cboFlow.Add([flow.name])
         cboFlow.Text := flowList[1].name
     }
 }
@@ -195,12 +190,6 @@ ConfirmFlowSelection(*) {
         local submittedData := myGui.Submit(false)
         local job := submittedData.SelectedJob
         local flowName := submittedData.SelectedFlow
-
-        ; 解析流派名称（去掉状态后缀）
-        if (InStr(flowName, " (待开发)")) {
-            MsgBox("该流派正在开发中，敬请期待！", "卡刀鸡 - 提示")
-            return
-        }
 
         ; 获取流派ID
         local flowList := GetFlowList(job)
@@ -235,8 +224,8 @@ SwitchFlow(job, flowId) {
 
     try {
         ; 检查流派是否已实现
-        if !IsFlowImplemented(flowId) {
-            MsgBox("该流派正在开发中，敬请期待！", "卡刀鸡 - 提示")
+        if (GetFlowModuleById(flowId) = "") {
+            MsgBox("找不到该流派模块，请重新启动卡刀鸡。", "卡刀鸡 - 提示")
             return
         }
 
@@ -319,8 +308,8 @@ LoadFlowUI(flowId) {
     global myGui, currentJob, startMainLoopButton
 
     ; 检查流派是否已实现
-    if !IsFlowImplemented(flowId) {
-        MsgBox("该流派正在开发中，敬请期待！", "卡刀鸡 - 提示")
+    if (GetFlowModuleById(flowId) = "") {
+        MsgBox("找不到该流派模块，请重新启动卡刀鸡。", "卡刀鸡 - 提示")
         return false
     }
 
