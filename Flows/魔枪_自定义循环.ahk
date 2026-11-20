@@ -18,10 +18,10 @@ InitFlowConfig_MagicSpearCustom() {
         CreateDefaultFlowConfig_MagicSpearCustom(configPath)
 
     skillConfig.startButton := ReadConfigStr(configPath, "Global", "startButton", "F1")
-    skillConfig.sequence := ReadConfigStr(configPath, "Global", "sequence", "1 LButton*3 RButton 4 LButton*3")
+    skillConfig.sequence := ReadConfigStr(configPath, "Global", "sequence", "E Tab LButton Z 4 RButton 4 RButton")
     skillConfig.pressHold := ReadConfigInt(configPath, "Global", "pressHold", 35)
-    skillConfig.pressDelay := ReadConfigInt(configPath, "Global", "pressDelay", 95)
-    skillConfig.mainLoopDelay := ReadConfigInt(configPath, "Global", "mainLoopDelay", 120)
+    skillConfig.pressDelay := ReadConfigInt(configPath, "Global", "pressDelay", 120)
+    skillConfig.mainLoopDelay := ReadConfigInt(configPath, "Global", "mainLoopDelay", 180)
     triggerMode := ReadConfigInt(configPath, "Global", "triggerMode", 1)
     startMainLoopButton := skillConfig.startButton
 }
@@ -35,11 +35,11 @@ CreateDefaultFlowConfig_MagicSpearCustom(configPath) {
     (LTrim
 [Global]
 startButton = F1
-; 20级练级循环；升级后可直接在界面修改
-sequence = 1 LButton*3 RButton 4 LButton*3
+; 满级狂龙固定循环；默认国服键位
+sequence = E Tab LButton Z 4 RButton 4 RButton
 pressHold = 35
-pressDelay = 95
-mainLoopDelay = 120
+pressDelay = 120
+mainLoopDelay = 180
 ; 0=按住运行，1=按一下开始、再按一下停止
 triggerMode = 1
     )"
