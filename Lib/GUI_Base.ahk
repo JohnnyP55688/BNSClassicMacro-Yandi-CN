@@ -156,7 +156,9 @@ ShowAbout(*) {
     local aboutText := "卡刀鸡 剑灵怀旧服卡刀宏`n"
     . "已实现流派：`n"
     . "- 气功：1系推龙`n"
-    . "- 召唤：1系马蜂`n`n"
+    . "- 召唤：1系马蜂`n"
+    . "- 炎帝：基础连招`n"
+    . "- 魔枪：自定义循环`n`n"
     . "© Version " . AppVersion
 
     MsgBox(aboutText, "卡刀鸡 - 关于")
@@ -229,7 +231,7 @@ ConfirmFlowSelection(*) {
 
 ; ============================== 流派切换核心逻辑 ==============================
 SwitchFlow(job, flowId) {
-    global currentFlowId, currentJob, startMainLoopButton, isMacroRunning, myGui
+    global currentFlowId, currentJob, startMainLoopButton, isMacroRunning, isToggleLoopActive, myGui
 
     try {
         ; 检查流派是否已实现
@@ -240,6 +242,7 @@ SwitchFlow(job, flowId) {
 
         ; 1. 停止当前卡刀循环
         isMacroRunning := false
+        isToggleLoopActive := false
 
         ; 2. 解绑当前热键
         if (startMainLoopButton != "") {
@@ -280,6 +283,8 @@ GetFlowModuleById(flowId) {
             return GetFlowModule_Zhaohuan1()
         case "炎帝_基础连招":
             return GetFlowModule_YandiBasic()
+        case "魔枪_自定义循环":
+            return GetFlowModule_MagicSpearCustom()
         ; 添加更多流派...
         default:
             return ""

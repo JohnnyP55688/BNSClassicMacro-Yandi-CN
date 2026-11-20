@@ -11,7 +11,7 @@
 SetWorkingDir A_ScriptDir
 
 ; ============================== 版本定义 ==============================
-global AppVersion := "0.10.0"
+global AppVersion := "0.11.0"
 
 ; ============================== 引用模块 ==============================
 ; 图像处理库
@@ -33,6 +33,7 @@ global AppVersion := "0.10.0"
 #Include Flows\气功_1系推龙.ahk
 #Include Flows\召唤_1系马蜂.ahk
 #Include Flows\炎帝_基础连招.ahk
+#Include Flows\魔枪_自定义循环.ahk
 ; 添加新流派时在此处添加 #Include
 
 ; ============================== 初始化 ==============================

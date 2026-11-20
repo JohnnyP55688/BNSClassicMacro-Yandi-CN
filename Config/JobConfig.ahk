@@ -23,6 +23,11 @@ JobFlowMap.Set("炎帝", [
     {name: "基础连招（低等级）", flowId: "炎帝_基础连招"}
 ])
 
+; 魔枪职业（可直接在界面编辑循环）
+JobFlowMap.Set("魔枪", [
+    {name: "自定义循环", flowId: "魔枪_自定义循环"}
+])
+
 ; 剑士职业（待开发）
 ; JobFlowMap.Set("剑士", [
 ;     {name: "3系雷龙", flowId: "剑士_3系雷龙"}
@@ -39,6 +44,7 @@ global FlowStatus := Map()
 FlowStatus.Set("召唤_1系马蜂", "已实现")
 FlowStatus.Set("气功_1系推龙", "已实现")
 FlowStatus.Set("炎帝_基础连招", "已实现")
+FlowStatus.Set("魔枪_自定义循环", "已实现")
 ; FlowStatus.Set("召唤_3系向日葵", "待开发")
 ; FlowStatus.Set("气功_2系攻时", "待开发")
 ; FlowStatus.Set("气功_3系冰河", "待开发")
