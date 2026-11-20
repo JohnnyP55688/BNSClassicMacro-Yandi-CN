@@ -420,7 +420,7 @@ StartSkillLoop_Zhaohuan1(ThisHotkey) {
         ; 设置状态为运行中
         isToggleLoopActive := true
         ; KeyWait 期间保持锁，防止其他线程修改状态
-        KeyWait(ThisHotkey)
+        KeyWait(ThisHotkey, "T0.08")
 
         ; 释放锁
         toggleLock := false

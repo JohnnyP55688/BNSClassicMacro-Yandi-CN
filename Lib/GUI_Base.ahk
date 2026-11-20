@@ -278,6 +278,8 @@ GetFlowModuleById(flowId) {
             return GetFlowModule_Qigong1()
         case "召唤_1系马蜂":
             return GetFlowModule_Zhaohuan1()
+        case "炎帝_基础连招":
+            return GetFlowModule_YandiBasic()
         ; 添加更多流派...
         default:
             return ""

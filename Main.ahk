@@ -11,7 +11,7 @@
 SetWorkingDir A_ScriptDir
 
 ; ============================== 版本定义 ==============================
-global AppVersion := "0.9.0"
+global AppVersion := "0.10.0"
 
 ; ============================== 引用模块 ==============================
 ; 图像处理库
@@ -32,14 +32,15 @@ global AppVersion := "0.9.0"
 ; 流派模块
 #Include Flows\气功_1系推龙.ahk
 #Include Flows\召唤_1系马蜂.ahk
+#Include Flows\炎帝_基础连招.ahk
 ; 添加新流派时在此处添加 #Include
 
 ; ============================== 初始化 ==============================
 InitCore()
 
 ; 设置默认职业和流派
-currentJob := "召唤"
-currentFlowId := "召唤_1系马蜂"
+currentJob := "炎帝"
+currentFlowId := "炎帝_基础连招"
 
 ; 加载血条配置
 LoadBloodbarConfig()

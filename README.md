@@ -1,134 +1,61 @@
-# 卡刀鸡 - 剑灵怀旧服卡刀宏
+# 卡刀鸡：剑灵怀旧服炎帝版
 
-自制剑灵怀旧服卡刀循环工具，支持动态切换流派、独立配置保存。
+基于 [TesBot/BNSClassicMacro](https://github.com/TesBot/BNSClassicMacro) 修改的 AutoHotkey v2 剑灵怀旧服卡刀工具。本版新增炎帝低等级基础连招，并保留原项目的气功与召唤模块。
 
-<img width="318" height="681" alt="image" src="https://github.com/user-attachments/assets/55bbbca3-8980-48a0-aa81-a1fe418d3069" />
+> 本项目是玩家自用的开源修改版，与游戏开发商、运营商及原项目作者无官方关系。使用自动化工具可能违反游戏规则，请自行判断风险。
 
-<img width="319" height="582" alt="image" src="https://github.com/user-attachments/assets/735750fb-4f22-410e-b7d5-4a8dd9bc2daf" />
+## 炎帝循环
 
-
-
-## 功能特点
-
-- **多职业支持**：气功、召唤、剑士、咒术等职业的不同流派（目前仅实现了气功和召唤其中一个系）
-- **动态切换**：运行时切换职业流派，无需重启程序
-- **独立配置**：每个流派独立保存配置，切换后自动加载
-- **图形界面**：直观的GUI操作界面
-- **托盘运行**：关闭窗口后继续在托盘区运行
-- **一键打包**：支持 Ahk2Exe 编译为独立exe
-
-## 文件结构
-
-```
-AHKtemp/
-├── Main.ahk                     # 主入口文件
-├── Lib/
-│   ├── Core.ahk                 # 核心公共库
-│   ├── GUI_Base.ahk             # GUI基础框架
-│   ├── Resources.ahk            # 资源打包配置
-│   └── ImagePut.ahk             # 图像处理库
-├── Config/
-│   ├── JobConfig.ahk            # 职业/流派映射配置
-│   ├── bloodbar_*.ini           # 职业血条配置（自动生成）
-│   └── flow_*.ini               # 流派独立配置（自动生成）
-├── Flows/
-│   ├── 气功_1系推龙.ahk          # 气功1系卡刀模块
-│   ├── 召唤_1系马蜂.ahk          # 召唤1系卡刀模块
-│   └── Template.ahk             # 新流派开发模板
-├── pic/                         # 图片资源目录
-│   ├── juesexuetiao.bmp         # 角色血条（公共）
-│   ├── qigong-*.bmp             # 气功技能图片
-│   └── zhaohuan-*.bmp/png       # 召唤技能图片
-└── README.MD
+```text
+4 → R → X → C → V → Z → Tab → 4 → R → Z → R → R×5 → T×10
 ```
 
-## 运行方式
+- 默认开关键：`F1`
+- 操作方式：轻按一次开始，再按一次停止
+- 生效窗口：仅当 `BNSR.exe` 位于前台时发送按键
+- 默认间隔：普通按键 90 ms，连续 R/T 75 ms
+- 适用范围：按当前低等级技能栏制作；技能或键位变化后需要自行调整
 
-### 方式一：直接运行脚本
-1. 安装 [AutoHotkey v2.0](https://www.autohotkey.com/)
-2. 双击运行 `Main.ahk`
+## 使用方法
 
-### 方式二：编译后运行
-1. 使用 Ahk2Exe 编译 `Main.ahk`
-2. 运行生成的 exe 文件
+1. 安装 [AutoHotkey v2](https://www.autohotkey.com/)。
+2. 下载本仓库源码并解压，双击 `Main.ahk`。
+3. 在界面选择“炎帝 / 基础连招（低等级）”，确认启动键为 F1 并保存。
+4. 切回游戏后按 F1 开始，再按 F1 停止。
 
-## 使用说明
+炎帝模块不需要取色。首次启动后，程序会在 `Config` 目录生成本机配置；这些个人配置不会提交到仓库。
 
-### 基本操作
-1. 选择职业和流派，点击「确认」
-2. 按照界面说明进行取色（Ctrl+P）
-3. 调整参数，点击「保存设置」
-4. 长按启动按键开始卡刀循环
+## 编译独立 EXE
 
-### 快捷键
+使用 AutoHotkey v2 自带的 Ahk2Exe，将 `Main.ahk` 选为源文件即可。编译前请保持 `Lib`、`Flows`、`Config`、`pic` 和 `favicon.ico` 的目录结构不变。
+
+## 其他快捷键
+
 | 快捷键 | 功能 |
-|--------|------|
-| Ctrl+P | 常规取色 |
-| Ctrl+Shift+P | 特殊取色（如召唤压猫） |
-| Ctrl+R | 重新加载配置 |
+| --- | --- |
+| `Ctrl+R` | 重新加载当前流派配置 |
+| `Ctrl+P` | 常规取色（炎帝不需要） |
+| `Ctrl+Shift+P` | 特殊取色（部分其他流派使用） |
 
-### 已实现流派
+## 项目结构
 
-#### 气功 - 1系推龙
-- 核心循环：2 → R → T → F
-- 技能检测：火莲掌(X)、混元罩(C)
-- 手动按键暂停：按住卡刀宏时按1/3/Q/E，循环暂停后发送按键再恢复
-- 激活延时：火莲掌、混元罩激活等待时间可配置
+```text
+Main.ahk                 主入口
+Config/JobConfig.ahk     职业与流派列表
+Flows/炎帝_基础连招.ahk  炎帝循环
+Flows/气功_1系推龙.ahk   原气功模块
+Flows/召唤_1系马蜂.ahk   原召唤模块
+Lib/                     公共框架与图像处理代码
+pic/                     技能识别图片
+```
 
-#### 召唤 - 1系马蜂
-- 核心循环：R → T
-- 技能检测：牵牛花(F)、压猫(Tab)、技能1(1)、技能2(2)
-- 压猫序列：挠挠 → 喵火流星 → 挠挠
+## 来源与授权
 
-## 添加新流派
+- 上游项目：[TesBot/BNSClassicMacro](https://github.com/TesBot/BNSClassicMacro)
+- 原项目作者：TesBot 及原项目贡献者
+- 炎帝修改版：在上游源码基础上增加炎帝循环、响应优化与中文使用说明
+- `ImagePut.ahk` 来源见其文件内声明及 [iseahound/ImagePut](https://github.com/iseahound/ImagePut)
 
-1. 复制 `Flows/Template.ahk` 为新流派文件
-2. 按模板实现各个函数
-3. 在 `Config/JobConfig.ahk` 添加流派映射
-4. 在 `Lib/Resources.ahk` 添加图片资源
-5. 在 `Main.ahk` 添加 `#Include` 引用
+本项目沿用上游仓库的 **GNU General Public License v3.0**。复制、修改和再发布时必须遵守 [LICENSE](LICENSE)。
 
-详细步骤请参考 `Flows/Template.ahk` 中的开发检查清单。
-
-## 配置文件说明
-
-### 血条配置（职业共享）
-- 文件名：`Config/bloodbar.ini`
-- 所有职业共享血条位置
-
-### 流派配置
-- 文件名：`Config/flow_[职业]_[流派].ini`
-- 包含：启动按键、循环延迟、技能开关、技能取色坐标等
-
-## 注意事项
-
-1. 默认屏幕分辨率为 2560x1440
-2. 配置变动后需点击「保存设置」
-3. 手动修改配置文件后需按 Ctrl+R 重新加载
-4. 关闭窗口后程序继续在托盘运行
-5. 完全退出请右键托盘图标选择「退出脚本」
-
-## 编译说明
-
-编译前请确保：
-1. `pic/` 目录下所有图片文件存在
-2. 所有 `#Include` 引用的文件存在
-
-使用 Ahk2Exe 编译：
-1. 打开 Ahk2Exe
-2. 选择 `Main.ahk` 作为源文件
-3. 点击编译
-<img width="956" height="609" alt="image" src="https://github.com/user-attachments/assets/e7c35f47-1255-4df4-b26b-826a598c6ead" />
-
-## 技术栈
-
-- [AutoHotkey v2.0](https://www.autohotkey.com/)
-- [ImagePut](https://github.com/iseahound/ImagePut) - 图像处理库
-
-## 版本历史
-
-- v0.9.0 - 初始版本，支持气功1系推龙、召唤1系马蜂
-
-## License
-
-MIT License
+详细变更见 [CHANGELOG.md](CHANGELOG.md)。

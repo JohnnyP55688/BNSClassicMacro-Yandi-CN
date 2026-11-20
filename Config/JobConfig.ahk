@@ -18,6 +18,11 @@ JobFlowMap.Set("气功", [
     ; {name: "3系冰河", flowId: "气功_3系冰河"}  ; 待开发
 ])
 
+; 炎帝职业（低等级基础连招，按当前教学技能栏配置）
+JobFlowMap.Set("炎帝", [
+    {name: "基础连招（低等级）", flowId: "炎帝_基础连招"}
+])
+
 ; 剑士职业（待开发）
 ; JobFlowMap.Set("剑士", [
 ;     {name: "3系雷龙", flowId: "剑士_3系雷龙"}
@@ -33,6 +38,7 @@ JobFlowMap.Set("气功", [
 global FlowStatus := Map()
 FlowStatus.Set("召唤_1系马蜂", "已实现")
 FlowStatus.Set("气功_1系推龙", "已实现")
+FlowStatus.Set("炎帝_基础连招", "已实现")
 ; FlowStatus.Set("召唤_3系向日葵", "待开发")
 ; FlowStatus.Set("气功_2系攻时", "待开发")
 ; FlowStatus.Set("气功_3系冰河", "待开发")

@@ -27,13 +27,7 @@ InitCore() {
     if !DirExist(ResourceTempDir)
         DirCreate(ResourceTempDir)
 
-    ; 管理员提权
-    if !A_IsAdmin {
-        try {
-            Run '*RunAs "' A_ScriptFullPath '"'
-            ExitApp
-        }
-    }
+    ; 不强制管理员提权，避免启动时被 UAC 拦截
 }
 
 ; ============================== 公共辅助函数 ==============================
