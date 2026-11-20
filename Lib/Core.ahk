@@ -95,6 +95,10 @@ GetBloodbarConfigPath() {
     return A_ScriptDir "\Config\bloodbar.ini"
 }
 
+GetAppConfigPath() {
+    return A_ScriptDir "\Config\app.ini"
+}
+
 ; 读取配置项（带默认值）
 ReadConfigInt(path, section, key, default := 0) {
     return Integer(IniRead(path, section, key, String(default)))

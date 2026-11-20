@@ -1,6 +1,7 @@
 # 用户本机配置（程序会自动生成）
 Config/flow_*.ini
 Config/bloodbar*.ini
+Config/app.ini
 Config/备份-*/
 
 # 本地运行环境与编译产物

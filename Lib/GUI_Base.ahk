@@ -258,6 +258,8 @@ SwitchFlow(job, flowId) {
         ; 3. 更新当前职业和流派（CreateMainGui会根据这些值加载正确的UI）
         currentJob := job
         currentFlowId := flowId
+        WriteConfig(GetAppConfigPath(), "Selection", "job", currentJob)
+        WriteConfig(GetAppConfigPath(), "Selection", "flowId", currentFlowId)
 
         ; 4. 重新创建整个GUI（内部会加载流派UI、初始化配置、绑定热键）
         CreateMainGui()

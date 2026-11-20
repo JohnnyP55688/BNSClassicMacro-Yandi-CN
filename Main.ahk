@@ -39,9 +39,9 @@ global AppVersion := "0.11.0"
 ; ============================== 初始化 ==============================
 InitCore()
 
-; 设置默认职业和流派
-currentJob := "炎帝"
-currentFlowId := "炎帝_基础连招"
+; 恢复上次选择；首次运行默认打开魔枪配置
+currentJob := ReadConfigStr(GetAppConfigPath(), "Selection", "job", "魔枪")
+currentFlowId := ReadConfigStr(GetAppConfigPath(), "Selection", "flowId", "魔枪_自定义循环")
 
 ; 加载血条配置
 LoadBloodbarConfig()
